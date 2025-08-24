@@ -1,0 +1,72 @@
+User Manual – Netflix ETL Pipeline
+
+This guide explains how to download the project from GitHub and run it on your local system.
+
+
+1. Prerequisites
+
+Make sure you have these installed:
+   -Python 3.8+ (https://www.python.org/downloads/)
+   -Apache Spark (https://spark.apache.org/downloads.html)
+   -PostgreSQL (https://www.postgresql.org/download/)
+   -Git (to download the project)
+
+
+2. Clone the Repository
+
+Open terminal (or Command Prompt) and run:
+
+    git clone https://github.com/yourusername/netflix  etl.git
+    cd netflix  etl
+
+
+3. Install Dependencies
+
+Inside the project folder, install required Python libraries:
+
+    pip install   r requirements.txt
+
+                                                                                                               
+4. Setup PostgreSQL
+                                                                                                                        
+1. Start PostgreSQL server.
+2. Create a database (default is 'postgres').
+3. Update load.py with your PostgreSQL credentials if needed:
+
+    dbname="postgres"
+    user="postgres"
+    password="postgres"
+    host="localhost"
+    port="5432"
+
+                                                                                                                        
+5. Run ETL Pipeline
+                                                                                                                        
+Run each step in order:
+
+Step 1 – Extract
+    python extract.py /path/to/extract
+
+Step 2 – Transform
+    python transform.py /path/to/extract /path/to/output
+
+Step 3 – Load
+    python load.py /path/to/output
+
+                                                                                                                        
+6. Verify Data
+                                                                                                                        
+Open PostgreSQL and check if the table is created:
+
+    SELECT * FROM netflix_shows LIMIT 10;
+
+                                                                                                                        
+7. Create Visualizations (Optional)
+                                                                                                                        
+1. Install Apache Superset (https://superset.apache.org/).
+2. Connect Superset to your PostgreSQL database.
+3. Explore tables → Create bar charts, pie charts, etc.
+
+                                                                                                                        
+Done! 
+You now have the Netflix dataset cleaned, transformed, and loaded into PostgreSQL, ready for visualization.
